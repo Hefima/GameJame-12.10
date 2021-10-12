@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 429119477}
   - component: {fileID: 429119476}
   - component: {fileID: 429119481}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -653,7 +653,7 @@ MonoBehaviour:
   anim: {fileID: 1824183750}
   isAttacking: 0
   attack: 0
-  attackRange: 0.26
+  attackRange: 1.05
   attackPoint: {fileID: 1403874295}
   hitLayer:
     serializedVersion: 2

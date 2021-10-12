@@ -38,11 +38,11 @@ public class Combat : MonoBehaviour
             isAttacking = true;
             attack++;
 
-            Collider2D[] hitObjects = Physics2D.OverlapCircleAll(attackPoint.transform.position, attackRange, hitLayer);
+            Collider[] hitObjects = Physics.OverlapSphere(attackPoint.transform.position, attackRange, hitLayer);
 
-            foreach (Collider2D enemy in hitObjects)
+            foreach (Collider enemy in hitObjects)
             {
-               enemy.gameObject.GetComponent<Health>().LoseHealth(10);
+               enemy.gameObject.GetComponent<Health>().LoseHealth(40);
             }
         }
     }
