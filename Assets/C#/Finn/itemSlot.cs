@@ -15,11 +15,6 @@ public class itemSlot : MonoBehaviour
 
     void OnButtonClick()
     {
-        //if(slotItem.itemClass == ItemClass.food && PlayerManager.acc.PF.food < PlayerManager.acc.PF.MaxFood || slotItem.itemClass == ItemClass.food && PlayerManager.acc.PH.health < PlayerManager.acc.PH.maxHealth)
-        //{
-        //    PlayerManager.acc.PF.AddFood(slotItem.foodAmount);
-        //    Destroy(this.gameObject);
-        //}
         switch (slotItem.itemClass)
         {
             case ItemClass.food:
