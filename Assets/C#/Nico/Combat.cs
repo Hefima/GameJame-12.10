@@ -13,13 +13,6 @@ public class Combat : MonoBehaviour
     public GameObject attackPoint;
     public LayerMask hitLayer;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         CheckInput();

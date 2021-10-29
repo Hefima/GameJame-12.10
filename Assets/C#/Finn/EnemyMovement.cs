@@ -12,9 +12,9 @@ public class EnemyMovement : MonoBehaviour
     public Transform startPos;
 
     public float moveRadius;
-    public float attackRadius;
     public float stopDis;
 
+    bool playerInRange = false;
     public float playerSearchRadius;
     public LayerMask playerMask;
 
@@ -53,10 +53,12 @@ public class EnemyMovement : MonoBehaviour
             moving = false;
         }
 
-        if (attacking && navMesh.remainingDistance < 0.5f && Time.time >= nextAttack)
+        if (attacking && navMesh.remainingDistance <= stopDis && Time.time >= nextAttack)
         {
             Attack();
         }
+
+        SearchPlayer();
     }
     
     void Attack()
@@ -79,17 +81,23 @@ public class EnemyMovement : MonoBehaviour
         navMesh.SetDestination(HefiMath.RandomVector3_Plane(moveRadius, startPos.position));
     }
 
-    /*void SearchPlayer()
+    void SearchPlayer()
     {
+        //playerInRange = Physics.CheckSphere(enemyObj.transform.position, playerSearchRadius, playerMask);
+
         Collider[] foundPlayer = Physics.OverlapSphere(enemyObj.transform.position, playerSearchRadius, playerMask);
 
-        if(foundPlayer.Length > 5)
+        foreach (var player in foundPlayer)
         {
-            print("FoundPlayer");
-            //attackPlayer 
-            AttackPlayer(foundPlayer[foundPlayer.Length].transform);
+            AttackPlayer(player.transform);
+            playerInRange = true;
         }
-    }*/
+
+        if (foundPlayer == null || foundPlayer.Length == 0)
+        {
+            playerInRange = false;
+        }
+    }
 
     void AttackPlayer(Transform player)
     {
@@ -106,11 +114,11 @@ public class EnemyMovement : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if(other.tag == "Player")
+       /* if(other.tag == "Player")
         {
             print("FoundPlayer");
             //attackPlayer 
             AttackPlayer(other.transform);
-        }
+        }*/
     }
 }

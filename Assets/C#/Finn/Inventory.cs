@@ -37,6 +37,8 @@ public class Inventory : MonoBehaviour
         g.transform.GetChild(1).transform.GetComponent<Text>().text = item.itemName;
         if(item.image != null)
             g.transform.GetChild(0).transform.GetComponent<Image>().sprite = item.image;
+
+        g.GetComponent<itemSlot>().slotItem = item;
     }
 
     public void RemoveItem(int i)
@@ -47,14 +49,15 @@ public class Inventory : MonoBehaviour
 
     public void ToggleInv()
     {
-        print("inv");
         if (inventoryUI.activeInHierarchy)
         {
             inventoryUI.SetActive(false);
+            Cursor.lockState = CursorLockMode.Locked;
         }
         else
         {
             inventoryUI.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
         }
     }
 }

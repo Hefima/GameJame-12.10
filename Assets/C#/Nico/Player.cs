@@ -25,6 +25,14 @@ public class Player : MonoBehaviour
     public bool isWalking;
     public bool isRunning;
 
+    //Interactables
+    public float playerCheckradius = 1.5f;
+    public bool oven;
+    public bool crafting;
+
+    public LayerMask ovenMask;
+    public LayerMask craftingMask;
+
     void Start()
     {
         acc = this;
@@ -57,6 +65,11 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I))
             Inventory.acc.ToggleInv();
 
+        HandleFood();
+
+        oven = Physics.CheckSphere(this.transform.position, playerCheckradius, ovenMask);
+        crafting = Physics.CheckSphere(this.transform.position, playerCheckradius, craftingMask);
+
     }
     
     private void FixedUpdate()
@@ -79,6 +92,11 @@ public class Player : MonoBehaviour
         {
             healthUI.transform.GetChild(1).gameObject.SetActive(false);
             healthUI.transform.GetChild(0).gameObject.SetActive(true);
+        }
+        else if(playerHealth.health == 0)
+        {
+            healthUI.transform.GetChild(0).gameObject.SetActive(false);
+            Debug.LogError("YOU DIED");
         }
     }
 
@@ -114,6 +132,10 @@ public class Player : MonoBehaviour
         anim.SetBool("isRunning", isRunning);
     }
 
+    void HandleFood()
+    {
+
+    }
 
     private void OnCollisionStay(Collision collision)
     {
@@ -138,5 +160,10 @@ public class Player : MonoBehaviour
             Inventory.acc.CollectItem(other.GetComponent<ItemHolder>().holderItem);
             Destroy(other.gameObject);
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        //Gizmos.DrawWireSphere(this.transform.position, playerCheckradius);
     }
 }

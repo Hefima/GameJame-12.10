@@ -99,7 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   holderItem:
     itemName: 
-    mesh: {fileID: 0}
+    mesh: {fileID: 3751499985095183892, guid: 8e5c8238c77829e4bb9a30f3c4c04e71, type: 3}
     image: {fileID: 0}
 --- !u!114 &4027736184024354562
 MonoBehaviour:

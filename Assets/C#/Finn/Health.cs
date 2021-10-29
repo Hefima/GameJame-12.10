@@ -27,6 +27,11 @@ public class Health : MonoBehaviour
     public void GetHealth(int heal)
     {
         health += heal;
+        if (health > maxHealth)
+            health = maxHealth;
+
+        if (this.gameObject.tag == "Player")
+            Player.acc.CheckHealth();
     }
 
     void CheckDeath()
