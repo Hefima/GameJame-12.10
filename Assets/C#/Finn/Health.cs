@@ -19,6 +19,9 @@ public class Health : MonoBehaviour
         health -= damage;
 
         CheckDeath();
+
+        if (this.gameObject.tag == "Player")
+            Player.acc.CheckHealth();
     }
 
     public void GetHealth(int heal)
@@ -28,7 +31,7 @@ public class Health : MonoBehaviour
 
     void CheckDeath()
     {
-        if(health >= 0)
+        if(health <= 0)
         {
             dead = true;
         }

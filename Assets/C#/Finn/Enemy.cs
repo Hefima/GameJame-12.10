@@ -5,20 +5,19 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
-    NavMeshAgent navMesh;
+    Health thisHealth;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        thisHealth = GetComponent<Health>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (thisHealth.dead)
+        {
+            Instantiate(this.GetComponent<ItemHolder>().holderItem.mesh, this.transform.position, this.transform.rotation);
+            Destroy(this.gameObject);
+        }
     }
-
-
-    
 }

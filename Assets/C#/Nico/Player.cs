@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public static Player instance;
+    public static Player acc;
+
+    Health playerHealth;
+    public GameObject healthUI;
 
     [Header("References")]
     public Rigidbody rb;
@@ -24,7 +27,10 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        instance = this;
+        acc = this;
+        playerHealth = this.GetComponent<Health>();
+
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
@@ -45,12 +51,35 @@ public class Player : MonoBehaviour
         if (isWalking && Input.GetKey(KeyCode.LeftShift))
             isRunning = true;
         else
-            isRunning = false; 
+            isRunning = false;
+
+
+        if (Input.GetKeyDown(KeyCode.I))
+            Inventory.acc.ToggleInv();
+
     }
     
     private void FixedUpdate()
     {
         Movement();
+    }
+
+    public void CheckHealth()
+    {
+        if (playerHealth.health == 3)
+        {
+            healthUI.transform.GetChild(2).gameObject.SetActive(true);
+        }
+        else if (playerHealth.health == 2)
+        {
+            healthUI.transform.GetChild(2).gameObject.SetActive(false);
+            healthUI.transform.GetChild(1).gameObject.SetActive(true);
+        }
+        else if (playerHealth.health == 1)
+        {
+            healthUI.transform.GetChild(1).gameObject.SetActive(false);
+            healthUI.transform.GetChild(0).gameObject.SetActive(true);
+        }
     }
 
     void Movement()
@@ -59,8 +88,12 @@ public class Player : MonoBehaviour
         {
             Vector3 moveDirection = new Vector3(horizontal, 0, vertical).normalized * moveSpeed * Time.deltaTime;
             rb.velocity = moveDirection;
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(moveDirection), 4);
+            if (playerInput.magnitude > 0)
+            {
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(moveDirection), 4);
+            }
         }
+
 
         if (isRunning)
             moveSpeed = 250;
@@ -95,6 +128,15 @@ public class Player : MonoBehaviour
         if(collision.gameObject.tag == "Ground")
         {
             isGrounded = false;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Item")
+        {
+            Inventory.acc.CollectItem(other.GetComponent<ItemHolder>().holderItem);
+            Destroy(other.gameObject);
         }
     }
 }

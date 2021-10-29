@@ -42,7 +42,7 @@ public class Combat : MonoBehaviour
 
             foreach (Collider enemy in hitObjects)
             {
-               enemy.gameObject.GetComponent<Health>().LoseHealth(40);
+               enemy.gameObject.GetComponent<Health>().LoseHealth(1);
             }
         }
     }

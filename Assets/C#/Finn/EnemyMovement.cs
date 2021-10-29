@@ -28,11 +28,16 @@ public class EnemyMovement : MonoBehaviour
     public float attackRange;
     public LayerMask hitLayer;
 
+    float nextAttack;
+    public float attackCD;
+
     private void Start()
     {
         navMesh = GetComponent<NavMeshAgent>();
         enemyObj = this.gameObject;
         startPos = this.transform;
+
+        nextAttack = Time.time;
     }
 
     private void FixedUpdate()
@@ -48,7 +53,7 @@ public class EnemyMovement : MonoBehaviour
             moving = false;
         }
 
-        if (attacking && navMesh.remainingDistance < 0.5f)
+        if (attacking && navMesh.remainingDistance < 0.5f && Time.time >= nextAttack)
         {
             Attack();
         }
@@ -57,12 +62,14 @@ public class EnemyMovement : MonoBehaviour
     void Attack()
     {
         print("attack");
+        nextAttack = Time.time + attackCD;
          
         Collider[] hitObjects = Physics.OverlapSphere(attackPoint.transform.position, attackRange, hitLayer);
 
-        foreach (Collider enemy in hitObjects)
+        for (int i = 0; i < hitObjects.Length; i++)
         {
-            enemy.gameObject.GetComponent<Health>().LoseHealth(10);
+            hitObjects[i].gameObject.GetComponent<Health>().LoseHealth(1);
+            return;
         }
     }
 

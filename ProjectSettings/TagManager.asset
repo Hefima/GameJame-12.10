@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PlayerEyes
   - Ground
+  - Item
   layers:
   - Default
   - TransparentFX
@@ -13,7 +14,7 @@ TagManager:
   - hitable
   - Water
   - UI
-  - 
+  - Player
   - 
   - 
   - 

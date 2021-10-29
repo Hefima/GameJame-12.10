@@ -8,5 +8,5 @@ public struct Item
 {
     public string itemName;
     public GameObject mesh;
-    public Image image;
+    public Sprite image;
 }
