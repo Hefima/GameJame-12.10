@@ -2258,8 +2258,8 @@ MonoBehaviour:
   isWalking: 0
   isRunning: 0
   playerCheckradius: 1.5
-  Oven: 0
-  Crafting: 0
+  oven: 0
+  crafting: 0
   ovenMask:
     serializedVersion: 2
     m_Bits: 128
@@ -2852,11 +2852,6 @@ Transform:
   m_Father: {fileID: 199356123}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: -6.057, y: 0, z: 0}
---- !u!1 &2272544811358840479 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6139024456274690890, guid: 8bcc67074fa393b4c8318faca088b019, type: 3}
-  m_PrefabInstance: {fileID: 5385039894123062741}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2667568171716085069
 Transform:
   m_ObjectHideFlags: 0
@@ -3260,10 +3255,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
-    - target: {fileID: 7357806696756006487, guid: a4a01a93d2d73e548b693467b1593108, type: 3}
-      propertyPath: holderItem.mesh
-      value: 
-      objectReference: {fileID: 2272544811358840479}
     - target: {fileID: 7357806696756006490, guid: a4a01a93d2d73e548b693467b1593108, type: 3}
       propertyPath: m_RootOrder
       value: 4

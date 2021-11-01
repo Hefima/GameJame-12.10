@@ -182,6 +182,8 @@ MonoBehaviour:
   holderItem:
     itemClass: 0
     foodAmount: 0
+    foodUncooked: 0
+    foodCoocked: {fileID: 0}
     itemName: 
     mesh: {fileID: 6139024456274690890, guid: 8bcc67074fa393b4c8318faca088b019, type: 3}
     image: {fileID: 0}
