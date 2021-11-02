@@ -5,12 +5,18 @@ using UnityEngine.UI;
 
 public class NPC : MonoBehaviour
 {
+    public static NPC acc;
     public GameObject newIsland;
     public GameObject Panel;
     public GameObject text;
 
     public bool isTalking;
     public bool inRange;
+
+    private void Awake()
+    {
+        acc = this;
+    }
 
     private void Update()
     {
@@ -24,6 +30,7 @@ public class NPC : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             text.SetActive(false);
             Panel.SetActive(true);
+            PlayerManager.acc.PInv.inventoryUI.SetActive(true);
         }
         else
         {
@@ -44,6 +51,7 @@ public class NPC : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            Panel.SetActive(false);
             text.SetActive(false);
             inRange = false;
         }
@@ -56,10 +64,10 @@ public class NPC : MonoBehaviour
 
     public void BuyIsland()
     {
-        if(CoinManager.acc.coins >= 100)
+        if(PlayerManager.acc.CM.coins >= 100)
         {
             newIsland.SetActive(true);
-            CoinManager.acc.coins -= 100;
+            PlayerManager.acc.CM.coins -= 100;
         }
         else
         {

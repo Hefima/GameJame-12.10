@@ -117,3 +117,4 @@ MonoBehaviour:
     itemName: Raw Meet
     mesh: {fileID: 0}
     image: {fileID: 21300000, guid: 66067808c91c71e41b7950a9d74bc3cb, type: 3}
+    coinValue: 4

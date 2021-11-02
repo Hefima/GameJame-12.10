@@ -7,6 +7,7 @@ public class itemSlot : MonoBehaviour
 {
     public Button thisButton;
     public Item slotItem;
+    public Text coinValueTXT;
 
     private void Start()
     {
@@ -15,22 +16,30 @@ public class itemSlot : MonoBehaviour
 
     void OnButtonClick()
     {
-        switch (slotItem.itemClass)
+        if (NPC.acc.inRange)
         {
-            case ItemClass.food:
-                if (PlayerManager.acc.PL.oven && slotItem.foodUncooked)
-                {
-                    Inventory.acc.CollectItem(slotItem.foodCoocked.GetComponent<ItemHolder>().holderItem);
-                    Destroy(this.gameObject);
-                }
-                else if(slotItem.itemClass == ItemClass.food && PlayerManager.acc.PF.food < PlayerManager.acc.PF.MaxFood || slotItem.itemClass == ItemClass.food && PlayerManager.acc.PH.health < PlayerManager.acc.PH.maxHealth)
-                {
-                    PlayerManager.acc.PF.AddFood(slotItem.foodAmount);
-                    Destroy(this.gameObject);
-                }
-                break;
-            case ItemClass.ressource:
-                break;
+            PlayerManager.acc.CM.coins += slotItem.coinValue;
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            switch (slotItem.itemClass)
+            {
+                case ItemClass.food:
+                    if (PlayerManager.acc.PL.oven && slotItem.foodUncooked)
+                    {
+                        Inventory.acc.CollectItem(slotItem.foodCoocked.GetComponent<ItemHolder>().holderItem);
+                        Destroy(this.gameObject);
+                    }
+                    else if (slotItem.itemClass == ItemClass.food && PlayerManager.acc.FM.food < PlayerManager.acc.FM.MaxFood || slotItem.itemClass == ItemClass.food && PlayerManager.acc.PH.health < PlayerManager.acc.PH.maxHealth)
+                    {
+                        PlayerManager.acc.FM.AddFood(slotItem.foodAmount);
+                        Destroy(this.gameObject);
+                    }
+                    break;
+                case ItemClass.ressource:
+                    break;
+            }
         }
     }
 }

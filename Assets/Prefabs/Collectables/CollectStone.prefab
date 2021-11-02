@@ -110,6 +110,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holderItem:
+    itemClass: 0
+    foodAmount: 0
+    foodUncooked: 0
+    foodCoocked: {fileID: 0}
     itemName: Stoned
     mesh: {fileID: 0}
     image: {fileID: 21300000, guid: db4e7dfa290b5114e807869855182cea, type: 3}
+    coinValue: 5

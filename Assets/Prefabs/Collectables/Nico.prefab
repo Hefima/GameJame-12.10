@@ -140,6 +140,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holderItem:
+    itemClass: 0
+    foodAmount: 0
+    foodUncooked: 0
+    foodCoocked: {fileID: 0}
     itemName: Nico
     mesh: {fileID: 0}
     image: {fileID: 21300000, guid: a81a17fa0665fcc469354504e81fdaed, type: 3}
+    coinValue: 20

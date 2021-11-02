@@ -22,4 +22,6 @@ public struct Item
     public string itemName;
     public GameObject mesh;
     public Sprite image;
+
+    public int coinValue;
 }

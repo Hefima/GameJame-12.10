@@ -9,7 +9,9 @@ public class PlayerManager : MonoBehaviour
     public Player PL;
     public Combat PC;
     public Health PH;
-    public FoodController PF;
+    public FoodController FM;
+    public CoinManager CM;
+    public Inventory PInv;
 
     private void Awake()
     {

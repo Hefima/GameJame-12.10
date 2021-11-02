@@ -110,6 +110,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holderItem:
+    itemClass: 0
+    foodAmount: 0
+    foodUncooked: 0
+    foodCoocked: {fileID: 0}
     itemName: Diamond
     mesh: {fileID: 0}
     image: {fileID: 21300000, guid: 0df8785de478a0842bed35bd41c115ff, type: 3}
+    coinValue: 15

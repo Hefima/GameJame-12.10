@@ -112,6 +112,9 @@ MonoBehaviour:
   holderItem:
     itemClass: 1
     foodAmount: 0.1
+    foodUncooked: 0
+    foodCoocked: {fileID: 0}
     itemName: Mushroom
     mesh: {fileID: 0}
     image: {fileID: 21300000, guid: 34987fb901591dc40ac303caa8f0e8d5, type: 3}
+    coinValue: 1

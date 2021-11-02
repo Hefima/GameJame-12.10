@@ -19,14 +19,14 @@ public class Inventory : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            CollectItem(ItemHolder.acc.holderItem);
-        }
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            RemoveItem(0);
-        }
+        //if (Input.GetKeyDown(KeyCode.R))
+        //{
+        //    CollectItem(ItemHolder.acc.holderItem);
+        //}
+        //if (Input.GetKeyDown(KeyCode.T))
+        //{
+        //    RemoveItem(0);
+        //}
     }
 
     public void CollectItem(Item item)
@@ -35,6 +35,7 @@ public class Inventory : MonoBehaviour
 
         GameObject g = Instantiate(itemPrefab, inventory.transform);
         g.transform.GetChild(1).transform.GetComponent<Text>().text = item.itemName;
+        g.GetComponent<itemSlot>().coinValueTXT.text = "" + item.coinValue;
         if(item.image != null)
             g.transform.GetChild(0).transform.GetComponent<Image>().sprite = item.image;
 

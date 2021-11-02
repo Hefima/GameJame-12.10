@@ -112,6 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e131f395039653143a8f13e573d5f970, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coinValue: 0
 --- !u!114 &451545718253283494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,9 +126,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holderItem:
+    itemClass: 0
+    foodAmount: 0
+    foodUncooked: 0
+    foodCoocked: {fileID: 0}
     itemName: 
     mesh: {fileID: 4768138036251340460, guid: 6eeef3d6f061db547b063e08d7a2c1f1, type: 3}
     image: {fileID: 0}
+    coinValue: 0
 --- !u!64 &9040459647257367880
 MeshCollider:
   m_ObjectHideFlags: 0
